@@ -36,7 +36,7 @@ test("request email carries both evening and actual arrival date, without claimi
   assert(!("html" in mail));
 });
 
-test("HTTP → SMTP request contract, failures, abuse controls and fixed recipient", async context => {
+test("HTTP → SMTP request contract, failures, abuse controls and fixed recipients", async context => {
   const envNames = ["SMTP_HOST", "SMTP_PORT", "SMTP_SECURE", "SMTP_USER", "SMTP_PASS", "SMTP_FROM", "RESERVATION_RECIPIENT_EMAIL"];
   const original = Object.fromEntries(envNames.map(key => [key, process.env[key]]));
   Object.assign(process.env, { SMTP_HOST: "smtp.example.com", SMTP_PORT: "465", SMTP_SECURE: "true",
@@ -52,7 +52,7 @@ test("HTTP → SMTP request contract, failures, abuse controls and fixed recipie
     return { sendMail: async message => {
       if (failure) throw new Error("SMTP credentials must not reach client");
       sent.push(message);
-      return { accepted: rejected ? [] : ["info@naser-solutions.de"] };
+      return { accepted: rejected ? [] : [message.to.address, message.cc.address] };
     }, close() {} };
   });
   const logs = mock.method(console, "error", () => {});
@@ -61,11 +61,23 @@ test("HTTP → SMTP request contract, failures, abuse controls and fixed recipie
       headers: { Origin: origin, "Content-Type": type, "x-vercel-forwarded-for": ip }, body: raw ? body : JSON.stringify(body) });
   }
   try {
-    await context.test("valid request sends one fixed-recipient email and uses guest as Reply-To", async () => {
-      const response = await POST(request({ ...payload, to: "evil@example.com" }));
+    await context.test("valid request sends to the existing recipient and fixed iCloud copy, using guest as Reply-To", async () => {
+      const response = await POST(request({ ...payload, to: "evil@example.com", cc: "evil@example.com" }));
       assert.equal(response.status, 200); assert.equal((await response.json()).code, "sent");
       assert.equal(sent.length, 1); assert.equal(sent[0].to.address, "info@naser-solutions.de");
+      assert.equal(sent[0].cc.address, "habibhayati85@icloud.com");
       assert.equal(sent[0].replyTo.address, valid.email); assert.equal(sent[0].from.address, "sender@example.com");
+    });
+    await context.test("iCloud copy remains present with a configured recipient or the default recipient", async () => {
+      process.env.RESERVATION_RECIPIENT_EMAIL = "reservations@example.com";
+      assert.equal((await POST(request())).status, 200);
+      assert.equal(sent.at(-1).to.address, "reservations@example.com");
+      assert.equal(sent.at(-1).cc.address, "habibhayati85@icloud.com");
+      delete process.env.RESERVATION_RECIPIENT_EMAIL;
+      assert.equal((await POST(request())).status, 200);
+      assert.equal(sent.at(-1).to.address, "info@naser-solutions.de");
+      assert.equal(sent.at(-1).cc.address, "habibhayati85@icloud.com");
+      process.env.RESERVATION_RECIPIENT_EMAIL = "info@naser-solutions.de";
     });
     await context.test("foreign origin, malformed payload, honeypot and oversized body never send email", async () => {
       const before = sent.length;
