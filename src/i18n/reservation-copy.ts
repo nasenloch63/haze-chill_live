@@ -9,7 +9,7 @@ export const reservationCopy = {
     nightHint: "00:00–01:30 Uhr gehört zur Nacht nach dem ausgewählten Datum.",
     required: "Name, E-Mail, Datum, Uhrzeit und Personenzahl sind Pflichtfelder.",
     submit: "Reservierungsanfrage senden", sending: "Anfrage wird gesendet …",
-    privacyBefore: "Deine Angaben werden zur Bearbeitung deiner Anfrage per E-Mail an info@naser-solutions.de weitergeleitet. Mehr in den", privacyLink: "Datenschutzhinweisen", privacyAfter: ".",
+    privacyBefore: "Deine Angaben werden zur Bearbeitung deiner Anfrage per E-Mail an info@naser-solutions.de und das Reservierungsteam von Haze and Chill weitergeleitet. Mehr in den", privacyLink: "Datenschutzhinweisen", privacyAfter: ".",
     success: "Deine Anfrage wurde versendet. Wir melden uns per E-Mail. Bitte warte auf unsere Bestätigung, bevor du mit einem reservierten Tisch planst.",
     another: "Weitere Anfrage stellen", errorTitle: "Anfrage nicht versendet",
     errors: {
@@ -33,7 +33,7 @@ export const reservationCopy = {
     nightHint: "00:00–01:30 refers to the night after the date you select.",
     required: "Name, email, date, time and number of guests are required.",
     submit: "Send reservation request", sending: "Sending request …",
-    privacyBefore: "Your details are forwarded by email to info@naser-solutions.de to handle your request. Read our", privacyLink: "privacy notice", privacyAfter: ".",
+    privacyBefore: "Your details are forwarded by email to info@naser-solutions.de and the Haze and Chill reservation team to handle your request. Read our", privacyLink: "privacy notice", privacyAfter: ".",
     success: "Your request was sent. We will reply by email. Please wait for our confirmation before planning with a reserved table.",
     another: "Make another request", errorTitle: "Request not sent",
     errors: {
