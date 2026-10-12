@@ -159,12 +159,13 @@ export function DatenschutzView() {
               Namen, deine E-Mail-Adresse, das gewünschte Datum und die Uhrzeit,
               die Personenzahl sowie optional deine Telefonnummer und Nachricht,
               um deine Anfrage zu bearbeiten und dir zu antworten. Die Angaben
-              werden per E-Mail an info@naser-solutions.de weitergeleitet.
+              werden per E-Mail an info@naser-solutions.de und in Kopie an das
+              Reservierungsteam von Haze and Chill weitergeleitet.
               Für den Versand verwenden wir einen SMTP-Maildienst.
             </LegalP>
             <LegalP>
               Auf der Website wird keine zusätzliche Reservierungsdatenbank
-              angelegt. Die Anfrage wird im empfangenden E-Mail-Postfach
+              angelegt. Die Anfrage wird in den empfangenden E-Mail-Postfächern
               verarbeitet und nur so lange aufbewahrt, wie dies zur Bearbeitung
               und gegebenenfalls zur Erfüllung gesetzlicher Pflichten erforderlich
               ist. Zur Abwehr wiederholter Anfragen wird ein kurzlebiger,
@@ -311,11 +312,12 @@ export function DatenschutzView() {
             We process your name, email, requested evening and arrival time,
             number of guests, and any optional phone number and message to
             handle your request and reply. Your details are forwarded by email
-            to info@naser-solutions.de using an SMTP mail service. No additional
+            to info@naser-solutions.de and copied to the Haze and Chill reservation
+            team using an SMTP mail service. No additional
             reservation database is maintained on this website.
           </LegalP>
           <LegalP>
-            Requests are retained in the receiving email inbox for as long as
+            Requests are retained in the receiving email inboxes for as long as
             needed to handle them and meet applicable obligations. A temporary
             hashed IP counter helps prevent repeated submissions; it does not
             store contact details. A request is not a confirmed table booking.

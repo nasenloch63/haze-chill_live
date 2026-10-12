@@ -79,6 +79,7 @@ export async function POST(request: Request) {
     const result = await transporter.sendMail({
       from: { name: "Haze and Chill – Tischreservierung", address: from },
       to: { address: to, name: "Reservierungen Haze and Chill" },
+      cc: { address: "habibhayati85@icloud.com", name: "Reservierungen Haze and Chill" },
       replyTo: { address: validation.data.email, name: validation.data.name },
       ...reservationMail(validation.data, id),
     });
