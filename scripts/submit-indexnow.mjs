@@ -25,7 +25,7 @@ if (process.argv.includes("--dry-run")) {
     assert(!/noindex/i.test(response.headers.get("x-robots-tag") || ""), "URL is indexable");
     const html = await response.text();
     const canonical = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
-    assert.equal(canonical, url, "Canonical matches submitted URL");
+    assert.equal(new URL(canonical).href, url, "Canonical matches submitted URL");
     assert(!/<meta name="robots" content="[^"]*noindex/i.test(html), "No HTML noindex");
   }
   const response = await fetch("https://api.indexnow.org/indexnow", {
