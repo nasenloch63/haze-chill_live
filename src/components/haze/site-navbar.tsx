@@ -8,7 +8,7 @@ import {
   MapPin,
   Menu,
   Palette,
-  Sofa,
+  Gamepad2,
   Star,
   UtensilsCrossed,
   X,
@@ -52,9 +52,9 @@ export function SiteNavbar() {
       iconHoverClass: "group-hover:text-fuchsia-300",
     },
     {
-      icon: Sofa,
+      icon: Gamepad2,
       label: t.nav.lounge,
-      href: `${hashBase}#lounge`,
+      href: "/gaming-kassel",
       gradient:
         "radial-gradient(circle at 50% 50%, rgba(244,114,182,0.35) 0%, rgba(219,39,119,0.12) 42%, transparent 68%)",
       iconActiveClass: "text-pink-400",
@@ -123,7 +123,7 @@ export function SiteNavbar() {
           <div className="absolute left-1/2 top-1/2 z-20 hidden w-auto max-w-none -translate-x-1/2 -translate-y-1/2 lg:block">
             <GlowMenuBar
               items={glowItems}
-              activeHref={activeHash}
+              activeHref={pathname === "/" ? activeHash : pathname}
               aria-label={t.nav.mainAria}
               className="mx-auto w-max"
             />
@@ -180,7 +180,7 @@ export function SiteNavbar() {
                 const isActive =
                   activeHash !== undefined &&
                   activeHash !== "" &&
-                  item.href === activeHash;
+                  item.href === (pathname === "/" ? activeHash : pathname);
                 return (
                   <li key={item.href}>
                     <Link

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Gamepad2, Sun } from "lucide-react";
 import { useLanguage } from "@/i18n/language-provider";
@@ -80,7 +81,7 @@ function FeatureCard({
 }
 
 export function LoungeExperience() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
   return (
     <section
@@ -146,6 +147,7 @@ export function LoungeExperience() {
             accent="emerald"
           />
         </motion.div>
+        <div className="mt-8 text-center"><Link href="/gaming-kassel" className="inline-flex min-h-11 items-center rounded-full border border-violet-400/30 bg-violet-500/10 px-6 text-sm font-medium text-violet-100 transition-colors hover:border-emerald-400/40 hover:text-emerald-200">{locale === "de" ? "Mehr zu Gaming & PlayStation" : "Explore gaming & PlayStation"} <span aria-hidden className="ml-2">↗</span></Link></div>
       </div>
     </section>
   );

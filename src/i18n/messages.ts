@@ -30,6 +30,7 @@ export type Messages = {
     en: string;
   };
   hero: {
+    heading: string;
     locationLine: string;
     subtitle: string;
     menuCta: string;
@@ -165,7 +166,7 @@ export const messages: Record<Locale, Messages> = {
     nav: {
       menu: "Menü",
       art: "Die Kunst",
-      lounge: "Der Spot",
+      lounge: "Gaming",
       reviews: "Stimmen",
       visit: "Besuch",
       instagramLabel: "Haze and Chill auf Instagram",
@@ -181,12 +182,13 @@ export const messages: Record<Locale, Messages> = {
       en: "EN",
     },
     hero: {
-      locationLine: "Kassel · Hessen",
+      heading: "Café & Gaming Lounge in Kassel",
+      locationLine: "Kassel · Innenstadt",
       subtitle:
-        "Kaffee, Cocktails, Snacks und Desserts in der Kasseler Innenstadt. Lounge, Terrasse und Gaming – täglich von 17:00 bis 02:00 Uhr (bis Ende).",
+        "PlayStation mit Freunden, Drinks in der Hand und Neon im Blick. Dein Abend mit Gaming, Café und Terrasse – täglich ab 17 Uhr.",
       menuCta: "Zum Menü",
       reservationCta: "Tisch anfragen",
-      vibeCta: "Dem Vibe folgen",
+      vibeCta: "Gaming entdecken",
     },
     gallery: {
       title: "Die Kunst des Chillens",
@@ -219,7 +221,7 @@ export const messages: Record<Locale, Messages> = {
     location: {
       title: "Standort & Zeiten",
       intro:
-        "Suchst du ein gemütliches Café in Kassel, eine Coffeeshop-Lounge oder einen Coffee Shop nahe der Innenstadt? Bei uns gibt es Kaffee, Cocktails und Desserts — plus Konsum vor Ort mit eigenem Material in den vorgesehenen Bereichen (wir verkaufen kein Cannabis, Hasch oder CBD). Oft bis spät geöffnet — perfekt als late-night-Café in Kassel.",
+        "Du findest Haze & Chill in der Kölnischen Str. 12–14, 34117 Kassel. Ob Gaming-Abend mit Freunden, ein Cocktail nach Feierabend oder eine Pause auf der Terrasse: Unser Café und unsere Lounge sind täglich von 17:00 bis 02:00 Uhr (bis Ende) geöffnet.",
       colDay: "Tag",
       colHours: "Uhrzeit",
       mapTitle: "Karte",
@@ -242,12 +244,12 @@ export const messages: Record<Locale, Messages> = {
         "Kennzeichnungen in Klammern sind aus der Speisekarte übernommen. Hinweise zu Allergenen erhältst du an der Theke.",
     },
     lounge: {
-      title: "Spiel, Terrasse & Chill",
+      title: "PlayStation, Drinks & Chill",
       subtitle:
-        "Gaming Lounge Kassel trifft Terrasse: Konsole drinnen, frische Luft draußen — dein Spot für Drinks, Snacks und entspannte Abende. In den ausgewiesenen Bereichen chillst du mit eigenem Material; es gibt keinen Verkauf durch uns.",
+        "Gemeinsam spielen, entspannt zusammensitzen und den Abend genießen. In unserer Gaming Lounge in Kassel treffen PlayStation und gute Drinks auf Street Art und Terrasse.",
       gaming: {
-        title: "Next-Level Gaming",
-        body: "Unsere Gaming Lounge in Kassel: PlayStation, Xbox, Nintendo Switch und mehr — unter Neon, ohne Stress, mit guten Drinks in Reichweite.",
+        title: "Eine Runde mit deinen Leuten",
+        body: "Spiel an der PlayStation und mach aus einem Treffen einen Gaming-Abend. Aktuelle Spiele, freie Plätze und Konditionen stimmt ihr direkt mit unserem Team ab.",
       },
       terrace: {
         title: "Die Terrasse",
@@ -350,7 +352,7 @@ export const messages: Record<Locale, Messages> = {
     nav: {
       menu: "Menu",
       art: "The Art",
-      lounge: "The Spot",
+      lounge: "Gaming",
       reviews: "Reviews",
       visit: "Visit",
       instagramLabel: "Haze and Chill on Instagram",
@@ -366,12 +368,13 @@ export const messages: Record<Locale, Messages> = {
       en: "EN",
     },
     hero: {
-      locationLine: "Kassel · Hessen",
+      heading: "Café & Gaming Lounge in Kassel",
+      locationLine: "Central Kassel",
       subtitle:
-        "Coffee, cocktails, snacks and desserts in central Kassel. Lounge, terrace and gaming – open daily from 5 pm to 2 am (until closing).",
+        "PlayStation with friends, a drink in hand and neon all around. Your evening of gaming, café and terrace – open daily from 5 pm.",
       menuCta: "View Menu",
       reservationCta: "Request a table",
-      vibeCta: "Follow the Vibe",
+      vibeCta: "Explore gaming",
     },
     gallery: {
       title: "The Art of the Chill",
@@ -402,7 +405,7 @@ export const messages: Record<Locale, Messages> = {
     location: {
       title: "Location & Hours",
       intro:
-        "Looking for a café or coffeeshop-style lounge in central Kassel? Coffee, cocktails, and desserts — plus designated areas for on-site use with your own material. We do not sell cannabis, hash, or CBD. Open every day from 17:00 until 02:00 (till the end).",
+        "Find Haze & Chill at Kölnische Str. 12–14, 34117 Kassel. Come for a gaming evening with friends, cocktails after work or a break on the terrace. Our café and lounge are open daily from 5 pm to 2 am (until closing).",
       colDay: "Day",
       colHours: "Hours",
       mapTitle: "Map",
@@ -425,12 +428,12 @@ export const messages: Record<Locale, Messages> = {
         "Numbered markings in brackets are taken from the printed menu. Ask at the counter for allergen details.",
     },
     lounge: {
-      title: "Game, Terrace & Chill",
+      title: "PlayStation, Drinks & Chill",
       subtitle:
-        "Gaming lounge meets terrace — console inside, fresh air outside. Drinks, snacks, and relaxed evenings; on-site use with your own material in the designated areas, not a retail shop.",
+        "Play together, settle into the lounge and enjoy the evening. PlayStation and good drinks meet street art and a terrace at our gaming lounge in Kassel.",
       gaming: {
-        title: "Next-level gaming",
-        body: "PlayStation, Xbox, Nintendo Switch, and more — couch co-op under the glow, controller in hand, zero stress.",
+        title: "A round with your crew",
+        body: "Play on the PlayStation and turn a catch-up into a gaming evening. Ask our team about current games, available spots and conditions.",
       },
       terrace: {
         title: "The terrace",

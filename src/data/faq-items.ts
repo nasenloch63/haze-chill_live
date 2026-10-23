@@ -1,6 +1,9 @@
+import { gamingFaqItems } from "@/data/gaming";
+
 export type FaqItem = { question: string; answer: string };
 
 export const faqItems: FaqItem[] = [
+  ...gamingFaqItems,
   { question: "Wo befindet sich Haze and Chill?",
     answer: "Du findest unser Café und unsere Lounge in der Kölnischen Str. 12-14, 34117 Kassel." },
   { question: "Wann habt ihr geöffnet?",

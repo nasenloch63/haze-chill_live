@@ -15,7 +15,7 @@ import { buildPageMetadata, seoConfig } from "@/lib/seo";
 
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Café, Coffeeshop und Lounge in Kassel",
+  title: "Café & Gaming Lounge in Kassel",
   description: seoConfig.defaultDescription,
   path: "/",
 });
@@ -28,10 +28,10 @@ export default function Home() {
       <main>
         <HeroSection />
         <LocalSeoSections />
+        <LoungeExperience />
         <ReservationSection />
         <MenuSection />
         <ArtOfChillGallery />
-        <LoungeExperience />
         <GoogleReviewsWall />
         <LocationHours />
       </main>

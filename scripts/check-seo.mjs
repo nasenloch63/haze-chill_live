@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from "node:fs";
 
 // Validate prerendered HTML rather than the hydrated browser DOM.
 const origin = "https://www.haze-chill.com";
-const routes = ["/", "/speisekarte", "/faq", "/links", "/impressum", "/datenschutz"];
+const routes = ["/", "/speisekarte", "/faq", "/gaming-kassel", "/links", "/impressum", "/datenschutz"];
 const htmlFor = route => readFileSync(`.next/server/app/${route === "/" ? "index" : route.slice(1)}.html`, "utf8");
 const decode = text => text.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 const pages = new Map(routes.map(route => [route, htmlFor(route)]));
@@ -33,6 +33,16 @@ for (const [route, html] of pages) {
   assert(!business.aggregateRating && !business.review, "No self-serving review schema");
   const main = html.match(/<main\b[^>]*>(.*?)<\/main>/s)?.[1] ?? "";
   const visible = decode(main.replace(/<script\b[^>]*>.*?<\/script>/gs, "").replace(/<[^>]+>/g, " "));
+  if (route === "/gaming-kassel") {
+    assert(visible.includes("PlayStation"), "Gaming visible without JavaScript");
+    assert(main.includes('href="/#reservation"'), "Gaming links to table request");
+    assert(visible.includes("Verfügbarkeit"), "No unqualified console booking promise");
+    assert(entities.some(entity => entity["@type"] === "BreadcrumbList"), "Gaming breadcrumbs");
+  }
+  if (route === "/") {
+    assert(main.includes('href="/gaming-kassel"'), "Home links to gaming");
+    assert(main.indexOf('id="lounge"') < main.indexOf('id="reservation"'), "Gaming before booking");
+  }
   if (route === "/speisekarte") {
     const menu = entities.find(entity => entity["@type"] === "Menu");
     assert(menu, "Menu entity");
@@ -71,4 +81,16 @@ for (const route of routes) assert(sitemap.includes(`<loc>${origin}${route}</loc
 assert.equal((sitemap.match(/<loc>/g) || []).length, routes.length);
 assert(readFileSync("public/robots.txt", "utf8").includes(`Sitemap: ${origin}/sitemap.xml`));
 assert(existsSync("public/gallery/social-card.jpg"));
+const robots = readFileSync("public/robots.txt", "utf8");
+assert(/User-agent:\s*\*/.test(robots) && /Allow:\s*\//.test(robots), "All crawlers allowed");
+assert(!/Disallow:\s*\/\s*$/m.test(robots), "No sitewide crawler block");
+const llms = readFileSync(".next/server/app/llms.txt.body", "utf8");
+const full = readFileSync(".next/server/app/llms-full.txt.body", "utf8");
+assert(llms.startsWith("# Haze & Chill"));
+assert(llms.includes(origin + "/gaming-kassel"));
+assert(full.includes("Gaming-Abend") && full.includes("Speisekarte"));
+for (const [, html] of pages) assert(html.includes('rel="describedby"'), "AI overview discoverable");
+const key = JSON.parse(readFileSync("scripts/indexnow.json", "utf8")).key;
+assert.equal(readFileSync("public/" + key + ".txt", "utf8").trim(), key);
+
 console.log(`SEO checks passed: ${routes.length} pages; ${itemCount} visible menu items with matching structured prices; canonicals, sitemap, FAQ and internal links.`);

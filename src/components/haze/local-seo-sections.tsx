@@ -7,7 +7,7 @@ export function LocalSeoSections() {
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <header className="max-w-3xl">
         <h2 className="font-display text-3xl font-bold text-white sm:text-4xl">Dein Abend bei Haze and Chill</h2>
-        <p className="mt-4 leading-relaxed text-violet-100/80">Haze and Chill ist ein Café und eine Lounge in der Kasseler Innenstadt. Bei uns gibt es Kaffee, Cocktails, Shakes, Snacks und Desserts – dazu Street Art, eine Terrasse und Gaming an der Konsole.</p>
+        <p className="mt-4 leading-relaxed text-violet-100/80">Nach Feierabend noch eine Runde zocken oder mit Freunden einen Drink genießen? Haze &amp; Chill verbindet Café und Gaming Lounge in der Kasseler Innenstadt: PlayStation, hausgemachter Eistee, Cocktails und Snacks, umgeben von Street Art und Neon.</p>
       </header>
       <div className="mt-12 grid gap-5 md:grid-cols-2">
         <article className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
@@ -16,9 +16,9 @@ export function LocalSeoSections() {
           <Link href="/speisekarte" className="mt-4 inline-flex min-h-11 items-center text-sm text-emerald-300 underline underline-offset-4">Vollständige Speisekarte mit Preisen</Link>
         </article>
         <article className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-          <h3 className="font-display text-xl font-semibold text-emerald-200">Lounge, Gaming und Terrasse</h3>
-          <p className="mt-3 text-violet-100/80">Triff Freunde in der Lounge, spiel an der Konsole oder setz dich auf die Terrasse. Wandkunst und Neon prägen unsere Räume.</p>
-          <Link href="/#lounge" className="mt-4 inline-flex min-h-11 items-center text-sm text-emerald-300 underline underline-offset-4">Lounge und Terrasse ansehen</Link>
+          <h3 className="font-display text-xl font-semibold text-emerald-200">Gaming in Kassel – mit deiner Crew</h3>
+          <p className="mt-3 text-violet-100/80">Gemeinsam an der PlayStation spielen, zwischendurch einen Shake trinken und danach auf der Terrasse weiterquatschen. Frag für euren Gaming-Abend einen Tisch an und stimmt die Konsolennutzung mit dem Team ab.</p>
+          <Link href="/gaming-kassel" className="mt-4 inline-flex min-h-11 items-center text-sm text-emerald-300 underline underline-offset-4">Gaming Lounge entdecken</Link>
         </article>
       </div>
       <article id="contact" className="mt-8 scroll-mt-24 rounded-2xl border border-emerald-500/20 bg-emerald-950/10 p-6">

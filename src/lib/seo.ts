@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 export const seoConfig = {
   baseUrl: "https://www.haze-chill.com",
   siteName: "Haze and Chill",
-  defaultTitle: "Haze and Chill – Café & Lounge in Kassel",
+  defaultTitle: "Haze & Chill – Café & Gaming Lounge in Kassel",
   titleTemplate: "%s | Haze and Chill Kassel",
   defaultDescription:
-    "Café und Lounge in der Kölnischen Str. 12–14 in Kassel. Kaffee, Cocktails, Snacks und Desserts. Täglich 17–02 Uhr (bis Ende). Speisekarte und Anfahrt.",
+    "Café & Gaming Lounge in Kassels Innenstadt: PlayStation, Cocktails, hausgemachter Eistee, Snacks und Terrasse. Täglich ab 17 Uhr. Plane deinen Abend bei Haze & Chill.",
   defaultOgImage: "/gallery/social-card.jpg",
   instagramUrl: "https://www.instagram.com/haze_and_chill_cafe/",
   mapsUrl: "https://maps.app.goo.gl/gEjB6Sn8PR39p6YH7",
@@ -23,6 +23,7 @@ export function buildPageMetadata({ title, description, path = "/" }: {
   return {
     title: { absolute: fullTitle }, description,
     alternates: { canonical },
+    robots: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
     openGraph: {
       title: fullTitle, description, url: canonical,
       siteName: seoConfig.siteName, locale: "de_DE", type: "website",

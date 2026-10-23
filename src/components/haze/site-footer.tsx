@@ -32,6 +32,8 @@ export function SiteFooter() {
             className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-violet-400/70 md:justify-end"
             aria-label="Legal"
           >
+            <Link href="/gaming-kassel" className="inline-flex min-h-11 items-center transition-colors hover:text-emerald-300/90">Gaming Lounge</Link>
+            <span className="text-violet-600/60" aria-hidden>·</span>
             <Link href="/speisekarte" className="transition-colors hover:text-emerald-300/90">
               {t.menu.title}
             </Link>

@@ -35,6 +35,11 @@ const siteGraph = {
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       opens: "17:00", closes: "02:00",
     }],
+    amenityFeature: [
+      { "@type": "LocationFeatureSpecification", name: "PlayStation", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Terrasse", value: true },
+    ],
+    acceptsReservations: `${seoConfig.baseUrl}/#reservation`,
     servesCuisine: ["Kaffee", "Snacks", "Desserts"], currenciesAccepted: "EUR",
     sameAs: [seoConfig.instagramUrl],
   }, {
@@ -46,6 +51,7 @@ const siteGraph = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="de" className="dark" suppressHydrationWarning>
+    <head><link rel="describedby" href="/llms.txt" type="text/plain" /></head>
     <body className={`${display.variable} ${sans.variable} min-h-screen font-sans`}>
       <StructuredData data={siteGraph} />
       <LanguageProvider>{children}</LanguageProvider>

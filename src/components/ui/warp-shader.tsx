@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Warp } from "@paper-design/shaders-react";
 
 const HAZE_WARP_COLORS = [
@@ -22,7 +22,17 @@ const BASE_ROTATION = 12;
 const LERP = 0.085;
 const STOP_EPS = 0.002;
 
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
+function subscribeReducedMotion(onChange: () => void) {
+  const media = window.matchMedia(reducedMotionQuery);
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+}
+const getReducedMotion = () => window.matchMedia(reducedMotionQuery).matches;
+const getServerReducedMotion = () => true;
+
 export function WarpShaderHero({ children }: { children: React.ReactNode }) {
+  const reducedMotion = useSyncExternalStore(subscribeReducedMotion, getReducedMotion, getServerReducedMotion);
   const rootRef = useRef<HTMLElement>(null);
   const targetRef = useRef({ x: 0, y: 0, rot: 0 });
   const currentRef = useRef({ x: 0, y: 0, rot: BASE_ROTATION });
@@ -87,6 +97,7 @@ export function WarpShaderHero({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (reducedMotion) return;
     const onMove = (e: PointerEvent) => {
       const el = rootRef.current;
       if (!el) return;
@@ -119,15 +130,15 @@ export function WarpShaderHero({ children }: { children: React.ReactNode }) {
       window.removeEventListener("pointermove", onMove);
       stopLoop();
     };
-  }, [scheduleTick, stopLoop]);
+  }, [scheduleTick, stopLoop, reducedMotion]);
 
   return (
     <section
       ref={rootRef}
       className="relative isolate min-h-[100svh] w-full overflow-hidden"
     >
-      <div className="absolute inset-0 z-0">
-        <Warp
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_25%_30%,rgba(109,40,217,0.7),transparent_60%),radial-gradient(ellipse_at_80%_70%,rgba(16,185,129,0.45),transparent_60%)]">
+        {!reducedMotion ? <Warp
           className="h-full min-h-[100svh] w-full"
           colors={HAZE_WARP_COLORS}
           speed={0.65}
@@ -143,7 +154,7 @@ export function WarpShaderHero({ children }: { children: React.ReactNode }) {
           rotation={warpProps.rotation}
           offsetX={warpProps.offsetX}
           offsetY={warpProps.offsetY}
-        />
+        /> : null}
       </div>
       <div
         className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-[#0a0a0a]/40 via-transparent to-[#0a0a0a]"

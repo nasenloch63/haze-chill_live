@@ -31,7 +31,7 @@ export const legalProseClass =
 
 export function LegalH1({ children }: { children: ReactNode }) {
   return (
-    <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <h1 className="break-words font-display text-3xl font-bold tracking-tight text-white [hyphens:auto] sm:text-4xl">
       {children}
     </h1>
   );

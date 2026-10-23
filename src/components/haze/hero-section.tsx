@@ -56,13 +56,13 @@ export function HeroSection() {
                 Haze &amp; Chill
               </span>
               <span className="mt-2 block bg-gradient-to-r from-violet-300 via-fuchsia-200 to-emerald-300 bg-clip-text text-2xl text-transparent sm:text-3xl md:text-4xl">
-                Café, Coffeeshop &amp; Lounge in Kassel
+                {t.hero.heading}
               </span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl font-sans text-base text-violet-50/95 drop-shadow-[0_2px_18px_rgba(0,0,0,0.92)] sm:mt-7 sm:text-lg">
               {t.hero.subtitle}
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row sm:gap-5">
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:mt-12 sm:flex-row sm:flex-wrap sm:gap-5">
               <Button variant="default" size="lg" asChild>
                 <Link href="/#reservation">{t.hero.reservationCta}</Link>
               </Button>
@@ -71,14 +71,14 @@ export function HeroSection() {
                 size="lg"
                 asChild
               >
-                <Link href="/#menu">{t.hero.menuCta}</Link>
+                <Link href="/gaming-kassel">{t.hero.vibeCta}</Link>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 asChild
               >
-                <Link href="/#location">{t.hero.vibeCta}</Link>
+                <Link href="/#menu">{t.hero.menuCta}</Link>
               </Button>
             </div>
           </div>

@@ -65,7 +65,7 @@ export function ReservationSection() {
       </header>
       <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-7">
         <div ref={feedback} tabIndex={-1} className="outline-none" aria-live="polite" aria-atomic="true">
-          {status === "sent" ? <div className="rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-5 text-emerald-100">
+          {status === "sent" ? <div role="status" aria-live="polite" className="rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-5 text-emerald-100">
             <CheckCircle2 aria-hidden className="mb-3 h-7 w-7 text-emerald-300" />
             <p>{copy.success}</p>
             <Button type="button" variant="outline" className="mt-5" onClick={() => setStatus("idle")}>{copy.another}</Button>

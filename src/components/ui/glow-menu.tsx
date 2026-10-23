@@ -115,7 +115,7 @@ export const GlowMenuBar = React.forwardRef<HTMLElement, GlowMenuBarProps>(
 
             return (
               <motion.li key={item.href} className="relative">
-                <Link href={item.href} className="block w-full scroll-smooth">
+                <Link href={item.href} aria-current={isActive ? (item.href.startsWith("#") ? "location" : "page") : undefined} className="block w-full scroll-smooth">
                   <motion.div
                     className="group relative block overflow-visible rounded-xl"
                     style={{ perspective: 600 }}
@@ -159,6 +159,7 @@ export const GlowMenuBar = React.forwardRef<HTMLElement, GlowMenuBarProps>(
                       </span>
                     </motion.div>
                     <motion.div
+                      aria-hidden="true"
                       className={cn(
                         "absolute inset-0 z-10 flex items-center gap-1.5 rounded-xl bg-transparent px-2.5 py-2 sm:gap-2 sm:px-4 sm:py-2",
                         isActive
