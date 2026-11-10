@@ -2,7 +2,7 @@ export const reservationCopy = {
   de: {
     eyebrow: "Dein Besuch bei Haze and Chill", title: "Tisch anfragen",
     intro: "Sag uns, wann du vorbeikommen möchtest und mit wie vielen Personen. Wir melden uns per E-Mail bei dir.",
-    hours: "Täglich 17:00–02:00 Uhr (bis Ende).", notice: "Dein Tisch ist erst nach unserer persönlichen Bestätigung reserviert.",
+    hours: "Täglich 17:00–02:00 Uhr (bis Ende).", notice: "Bitte sende uns deine Reservierungsanfrage mindestens 24 Stunden vor deinem Besuch. Dein Tisch ist erst nach unserer persönlichen Bestätigung reserviert.",
     name: "Dein Name", email: "E-Mail", phone: "Telefon (optional)", date: "Datum des Abends",
     time: "Ankunftszeit", guests: "Personen", message: "Nachricht (optional)",
     messageHint: "Zum Beispiel Wünsche zum Sitzplatz oder Fragen zu eurem Besuch.",
@@ -26,7 +26,7 @@ export const reservationCopy = {
   en: {
     eyebrow: "Your visit to Haze and Chill", title: "Request a table",
     intro: "Tell us when you would like to visit and how many people are coming. We will get back to you by email.",
-    hours: "Daily 5 pm–2 am (until closing).", notice: "Your table is only reserved after our personal confirmation.",
+    hours: "Daily 5 pm–2 am (until closing).", notice: "Please send your reservation request at least 24 hours before your visit. Your table is only reserved after our personal confirmation.",
     name: "Your name", email: "Email", phone: "Phone (optional)", date: "Date of the evening",
     time: "Arrival time", guests: "Guests", message: "Message (optional)",
     messageHint: "For example, seating preferences or questions about your visit.",
