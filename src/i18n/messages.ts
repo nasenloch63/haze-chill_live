@@ -420,7 +420,7 @@ export const messages: Record<Locale, Messages> = {
     },
     menu: {
       title: "The Menu",
-      pdfCta: "Menu as PDF",
+      pdfCta: "Original menu PDF (German)",
       fullMenuCta: "All food and drinks on one page",
       categoriesAria: "Menu categories",
       priceAria: (price) => `Price ${price}`,

@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/i18n/language-provider";
-import { faqItems } from "@/data/faq-items";
+import { faqItems, faqItemsEn } from "@/data/faq-items";
 
 export function FaqSection() {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
 
   return (
-    <section id="faq" lang="de" className="bg-[#09070e]">
+    <section id="faq" className="bg-[#09070e]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -21,16 +21,16 @@ export function FaqSection() {
 
         <header className="mx-auto max-w-3xl pt-10 text-center">
           <h1 className="font-display text-3xl font-bold text-white sm:text-4xl">
-            Fragen zu deinem Besuch
+            {locale === "en" ? "Visitor FAQs" : "Fragen zu deinem Besuch"}
           </h1>
           <p className="mt-3 text-violet-200/70">
-            Adresse, Öffnungszeiten, Speisekarte und Antworten zum Café und zur Lounge.
+            {locale === "en" ? "Address, opening hours, menu and answers about the café and lounge." : "Adresse, Öffnungszeiten, Speisekarte und Antworten zum Café und zur Lounge."}
           </p>
         </header>
 
-        <p className="mt-6 text-center"><Link href="/speisekarte" className="text-emerald-300 underline underline-offset-4">Speisekarte mit allen Preisen</Link></p>
+        <p className="mt-6 text-center"><Link href="/speisekarte" className="text-emerald-300 underline underline-offset-4">{t.menu.fullMenuCta}</Link></p>
         <div className="mx-auto mt-10 grid max-w-4xl gap-4 pb-4 sm:gap-5 sm:pb-0">
-          {faqItems.map((item) => (
+          {(locale === "en" ? faqItemsEn : faqItems).map((item) => (
             <details
               key={item.question}
               className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-left"

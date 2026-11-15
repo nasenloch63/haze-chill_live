@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, FileText } from "lucide-react";
+import { translateMenuText } from "@/i18n/menu-copy";
 import { menuData } from "@/data/menu-data";
 import { menuCategoryVisuals } from "@/data/menu-category-visuals";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -45,7 +46,7 @@ function MenuItemRow({
 }
 
 export function MenuSection() {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
   const defaultTab = "tab-0";
   const [activeTab, setActiveTab] = useState(defaultTab);
 
@@ -111,11 +112,11 @@ export function MenuSection() {
                   className="rounded-full border-0 bg-transparent p-0 shadow-none ring-offset-0 focus-visible:ring-0 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
                 >
                   <GradientMenuTabTrigger
-                    label={cat.category}
+                    label={translateMenuText(cat.category, locale)}
                     gradientFrom={gradientFrom}
                     gradientTo={gradientTo}
                     Icon={Icon}
-                    title={cat.category}
+                    title={translateMenuText(cat.category, locale)}
                   />
                 </TabsTrigger>
               );
@@ -125,19 +126,19 @@ export function MenuSection() {
           {menuData.map((cat, i) => (
             <TabsContent key={cat.category} value={`tab-${i}`}>
               <h3 className="font-display text-lg font-semibold text-violet-100">
-                {cat.category}
+                {translateMenuText(cat.category, locale)}
               </h3>
               {cat.notes ? (
                 <p className="mt-2 rounded-lg border border-emerald-500/20 bg-emerald-950/20 px-3 py-2 text-sm text-emerald-200/80">
-                  {cat.notes}
+                  {translateMenuText(cat.notes, locale)}
                 </p>
               ) : null}
               <ul className="mt-4 list-none p-0" role="list">
                 {cat.items.map((item) => (
                   <MenuItemRow
                     key={`${cat.category}-${item.name}`}
-                    name={item.name}
-                    description={item.description}
+                    name={translateMenuText(item.name, locale)}
+                    description={translateMenuText(item.description, locale)}
                     price={item.price}
                     priceAriaLabel={t.menu.priceAria(item.price)}
                   />

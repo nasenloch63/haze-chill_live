@@ -21,7 +21,7 @@ function Stars({ count, ariaLabel }: { count: number; ariaLabel: string }) {
 }
 
 export function GoogleReviewsWall() {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
 
   return (
     <section id="reviews" aria-labelledby="reviews-heading" className="scroll-mt-20 border-t border-white/5 bg-[#080808] py-20 sm:py-28">
@@ -37,9 +37,10 @@ export function GoogleReviewsWall() {
           {googleReviews.map((review) => (
             <article key={review.id} className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6">
               <Stars count={review.rating} ariaLabel={t.reviews.starsAria(review.rating)} />
-              <blockquote lang="de" className="mt-5 flex-1 whitespace-pre-line text-base leading-relaxed text-violet-100/90">
-                „{review.text}“
+              <blockquote lang={locale} className="mt-5 flex-1 whitespace-pre-line text-base leading-relaxed text-violet-100/90">
+                {locale === "en" ? `“${review.translation}”` : `„${review.text}“`}
               </blockquote>
+              {locale === "en" && <p className="mt-2 text-xs text-violet-200/70">Translated from German</p>}
               <p className="mt-6 font-semibold text-white">{review.name}</p>
               <a href={googleReviewsUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 w-fit items-center gap-1.5 text-xs text-emerald-300/80 transition-colors hover:text-emerald-200">
                 {t.reviews.googleBadge}

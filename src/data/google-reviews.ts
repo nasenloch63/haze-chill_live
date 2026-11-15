@@ -7,18 +7,21 @@ export const googleReviews = [
     id: "dominik-hardt",
     name: "Dominik Hardt",
     rating: 5,
+    translation: "Very relaxed café. I’d definitely recommend it 👍🏼",
     text: "Sehr entspanntes Café\nKann man nur weiterempfehlen 👍🏼",
   },
   {
     id: "matthias-hofmeister",
     name: "Matthias Hofmeister",
     rating: 5,
+    translation: "Friendly owner, great concept",
     text: "Freundlicher Besitzer, gutes Konzept",
   },
   {
     id: "mario-boehme",
     name: "mario boehme",
     rating: 5,
+    translation: "Lovely, cosy place",
     text: "Schöne gemütliche Location",
   },
 ];
