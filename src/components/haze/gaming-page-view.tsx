@@ -12,13 +12,17 @@ import { siteLegal } from "@/config/site-legal";
 import { seoConfig } from "@/lib/seo";
 import { gamingFaqItems, gamingFaqItemsEn } from "@/data/gaming";
 const features = [
-  { icon: Gamepad2, title: "Zusammen zocken", body: "Eine Runde an der PlayStation, direkt mit deinen Leuten. Welche Spiele gerade laufen und wann ein Platz frei ist, klärst du mit unserem Team." },
+  { icon: Gamepad2, title: "Nintendo Switch", body: "Neben unseren PS5-Konsolen wartet auch eine Nintendo Switch auf euch. Gebt bei eurer Anfrage an, dass ihr an der Switch spielen möchtet, und besprecht eure Spielwünsche mit unserem Team." },
+  { icon: Gamepad2, title: "UFC, FIFA 27, Fortnite & Tekken", body: "Fußballmatch, Kampf im Octagon, Battle Royale oder ein Duell in der aktuellen Tekken-Version – bei uns findet ihr Spiele für unterschiedliche Vorlieben. Sagt uns bei der Anfrage, welches Spiel ihr spielen möchtet." },
+  { icon: Gamepad2, title: "Zusammen zocken", body: "Bei uns stehen mehrere PS5-Konsolen für euren Gaming-Abend bereit. Kommt mit Freunden vorbei und spielt gemeinsam oder gegeneinander." },
   { icon: GlassWater, title: "Drinks in Reichweite", body: "Hausgemachter Eistee, Shakes oder Cocktails, auch alkoholfrei. Dazu Nachos oder ein Toast aus unserer Speisekarte." },
   { icon: Moon, title: "Den Abend genießen", body: "Nach der Runde bleibt ihr in der Lounge oder geht auf die Terrasse. Wir sind täglich von 17:00 bis 02:00 Uhr (bis Ende) für euch da." },
 ];
 
 const featuresEn = [
-  { icon: Gamepad2, title: "Play together", body: "Get your friends together for a round on PlayStation. Ask our team which games are available and when you can play." },
+  { icon: Gamepad2, title: "Nintendo Switch", body: "Alongside our PS5 consoles, we also have a Nintendo Switch. Mention the Switch in your request and talk to our team about the games you would like to play." },
+  { icon: Gamepad2, title: "UFC, FIFA 27, Fortnite & Tekken", body: "A football match, a fight in the Octagon, battle royale or a head-to-head in the latest Tekken – choose a game to suit your group. Let us know your preferred game when you request a spot." },
+  { icon: Gamepad2, title: "Play together", body: "We have several PS5 consoles ready for your gaming night. Bring your friends and play together or challenge each other." },
   { icon: GlassWater, title: "Drinks and snacks", body: "Choose a homemade iced tea, shake or cocktail, with alcohol-free options too. Pick up some nachos or a toastie from our menu." },
   { icon: Moon, title: "Stay for the evening", body: "After your game, stay in the lounge or head out to the terrace. We’re open daily from 5 pm to 2 am." },
 ];
@@ -26,10 +30,10 @@ const featuresEn = [
 const pageCopy = {
   de: {
     "breadcrumb": "Gaming in Kassel",
-    "intro": "Controller in die Hand. Den Alltag auf Pause. Spiel mit Freunden an der PlayStation und mach die nächste Runde zu eurem Abend bei Haze & Chill.",
+    "intro": "Mehrere PS5-Konsolen, Nintendo Switch und Spiele für euren gemeinsamen Abend. Spiel mit Freunden UFC, FIFA 27, Fortnite oder die aktuelle Tekken-Version und genieße zwischendurch Drinks und Snacks in unserer Lounge.",
     "location": "Café, Drinks und Gaming in der Kölnischen Straße – mitten in Kassel, mit Street Art, Neon und Platz zum Chillen.",
     "requestGaming": "Gaming-Abend anfragen ",
-    "bookingInfo": "Gaming-Wunsch im Nachrichtenfeld nennen. Konsole, Spiele und Konditionen nach Verfügbarkeit mit dem Team abstimmen.",
+    "bookingInfo": "Bitte mindestens 24 Stunden vorher anfragen. Nenne eure Personenzahl, PS5 oder Nintendo Switch und euer Wunschspiel im Nachrichtenfeld. Verfügbarkeit und Konditionen stimmt ihr mit unserem Team ab.",
     "photoTitle": "Deine Crew. Euer Abend.",
     "photoCaption": "Ein Blick in unsere Lounge in Kassel.",
     "eveningLabel": "Offline zusammen. Online im Spiel.",
@@ -45,10 +49,10 @@ const pageCopy = {
   },
   en: {
     "breadcrumb": "Gaming in Kassel",
-    "intro": "Grab a controller and take a break. Play with friends on PlayStation and make a night of it at Haze & Chill.",
+    "intro": "Several PS5 consoles, Nintendo Switch and games for a night with friends. Play UFC, FIFA 27, Fortnite or the latest Tekken, then enjoy drinks and snacks between rounds in our lounge.",
     "location": "Coffee, drinks and gaming on Kölnische Straße in central Kassel, with street art, neon lights and room to unwind.",
     "requestGaming": "Request a gaming night",
-    "bookingInfo": "Mention gaming in your message and check console and game availability and terms with the team.",
+    "bookingInfo": "Please request at least 24 hours in advance. Include your group size, PS5 or Nintendo Switch and your preferred game in the message. Check availability and terms with our team.",
     "photoTitle": "Your crew. Your night.",
     "photoCaption": "A look inside our lounge in Kassel.",
     "eveningLabel": "Together in person. Online in the game.",
@@ -96,7 +100,7 @@ export function GamingPageView() {
                 <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#08060c]/90 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 rounded-2xl border border-white/15 bg-black/40 p-4 backdrop-blur-md">
                   <Gamepad2 aria-hidden className="h-8 w-8 shrink-0 text-emerald-300" />
-                  <p className="text-sm text-violet-50"><span className="block font-display font-bold text-white">{copy.photoTitle}</span>PlayStation · Drinks · Lounge</p>
+                  <p className="text-sm text-violet-50"><span className="block font-display font-bold text-white">{copy.photoTitle}</span>PS5 · Nintendo Switch · Lounge</p>
                 </div>
               </div>
               <figcaption className="px-2 pb-1 pt-3 text-xs text-violet-200/65">{copy.photoCaption}</figcaption>
@@ -108,7 +112,7 @@ export function GamingPageView() {
         <div className="flex items-center gap-3 text-emerald-300"><Users aria-hidden className="h-5 w-5 shrink-0" /><p className="text-xs font-semibold uppercase tracking-[0.2em]">{copy.eveningLabel}</p></div>
         <h2 id="gaming-evening" className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">{copy.eveningTitle}</h2>
         <p className="mt-4 max-w-2xl leading-relaxed text-violet-100/80">{copy.eveningBody}</p>
-        <div className="mt-9 grid gap-5 md:grid-cols-3">{(locale === "en" ? featuresEn : features).map(({ icon: Icon, title, body }) => <article key={title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+        <div className="mt-9 grid gap-5 md:grid-cols-2">{(locale === "en" ? featuresEn : features).map(({ icon: Icon, title, body }) => <article key={title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
           <Icon aria-hidden className="mb-5 h-6 w-6 text-violet-300" /><h3 className="font-display text-xl font-bold text-white">{title}</h3><p className="mt-3 text-sm leading-relaxed text-violet-100/80">{body}</p>
         </article>)}</div>
         <Link href="/#lounge" className="mt-6 inline-flex min-h-11 items-center text-sm text-emerald-300 underline underline-offset-4">{copy.exploreLounge}</Link>

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { TikTokIcon } from "@/components/haze/tiktok-icon";
 import { FACEBOOK_URL, TIKTOK_URL } from "@/lib/social-links";
 import { usePathname } from "next/navigation";
 import {
@@ -9,7 +10,6 @@ import {
   Facebook, Instagram,
   MapPin,
   Menu,
-  Music2,
   Palette,
   Gamepad2,
   Star,
@@ -160,7 +160,7 @@ export function SiteNavbar() {
               className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-emerald-300 sm:flex transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/10 hover:text-emerald-200"
               aria-label={t.nav.tiktokLabel}
             >
-              <Music2 className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+              <TikTokIcon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
             </a>
             <a
               href={FACEBOOK_URL}
@@ -239,7 +239,7 @@ export function SiteNavbar() {
             <div className="mt-4 flex flex-wrap gap-3 sm:hidden">
               {[
                 { href: "https://www.instagram.com/haze_and_chill_cafe/", label: "Instagram", icon: Instagram },
-                { href: TIKTOK_URL, label: "TikTok", icon: Music2 },
+                { href: TIKTOK_URL, label: "TikTok", icon: TikTokIcon },
                 { href: FACEBOOK_URL, label: "Facebook", icon: Facebook },
               ].map(({ href, label, icon: Icon }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 px-3 text-sm text-emerald-300">

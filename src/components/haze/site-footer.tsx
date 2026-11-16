@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Facebook, Instagram, Music2 } from "lucide-react";
+import { TikTokIcon } from "@/components/haze/tiktok-icon";
+import { Facebook, Instagram } from "lucide-react";
 import { FACEBOOK_URL, TIKTOK_URL } from "@/lib/social-links";
 import { useLanguage } from "@/i18n/language-provider";
 import { WebsiteCredit } from "@/components/haze/website-credit";
@@ -35,7 +36,7 @@ export function SiteFooter() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-violet-100/90 transition-colors hover:border-emerald-400/40 hover:text-emerald-300"
           >
-            <Music2 className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+            <TikTokIcon className="h-4 w-4" strokeWidth={1.75} aria-hidden />
             TikTok
           </a>
           <a
