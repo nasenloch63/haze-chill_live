@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Globe, Instagram, MapPin, UtensilsCrossed } from "lucide-react";
+import { ArrowUpRight, Globe, Facebook, Instagram, MapPin, Music2, UtensilsCrossed } from "lucide-react";
+import { FACEBOOK_URL, TIKTOK_URL } from "@/lib/social-links";
 import { GradientLogoMark } from "@/components/haze/gradient-logo-mark";
 import { LanguageToggle } from "@/components/haze/language-toggle";
 import { useLanguage } from "@/i18n/language-provider";
@@ -24,6 +25,24 @@ export function LinksView() {
       title: "Instagram",
       description: "@haze_and_chill_cafe",
       icon: Instagram,
+      className:
+        "border-violet-400/25 bg-violet-500/10 hover:border-violet-300/50 hover:bg-violet-500/15",
+      iconClassName: "bg-violet-400/10 text-violet-300",
+    },
+    {
+      href: FACEBOOK_URL,
+      title: "Facebook",
+      description: "Haze & Chill Café",
+      icon: Facebook,
+      className:
+        "border-violet-400/25 bg-violet-500/10 hover:border-violet-300/50 hover:bg-violet-500/15",
+      iconClassName: "bg-violet-400/10 text-violet-300",
+    },
+    {
+      href: TIKTOK_URL,
+      title: "TikTok",
+      description: "@haze_and_chill_cafe",
+      icon: Music2,
       className:
         "border-violet-400/25 bg-violet-500/10 hover:border-violet-300/50 hover:bg-violet-500/15",
       iconClassName: "bg-violet-400/10 text-violet-300",

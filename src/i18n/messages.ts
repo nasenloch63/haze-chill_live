@@ -15,9 +15,12 @@ export type Messages = {
     menu: string;
     art: string;
     lounge: string;
+    events: string;
     reviews: string;
     visit: string;
     instagramLabel: string;
+    tiktokLabel: string;
+    facebookLabel: string;
     logoAlt: string;
     mainAria: string;
     openMobileNav: string;
@@ -167,9 +170,12 @@ export const messages: Record<Locale, Messages> = {
       menu: "Menü",
       art: "Die Kunst",
       lounge: "Gaming",
+      events: "Events",
       reviews: "Stimmen",
       visit: "Besuch",
       instagramLabel: "Haze and Chill auf Instagram",
+      tiktokLabel: "Haze and Chill auf TikTok",
+      facebookLabel: "Haze and Chill auf Facebook",
       logoAlt: "Haze and Chill",
       mainAria: "Hauptnavigation",
       openMobileNav: "Menü öffnen",
@@ -353,9 +359,12 @@ export const messages: Record<Locale, Messages> = {
       menu: "Menu",
       art: "The Art",
       lounge: "Gaming",
+      events: "Events",
       reviews: "Reviews",
       visit: "Visit",
       instagramLabel: "Haze and Chill on Instagram",
+      tiktokLabel: "Haze and Chill on TikTok",
+      facebookLabel: "Haze and Chill on Facebook",
       logoAlt: "Haze and Chill",
       mainAria: "Main navigation",
       openMobileNav: "Open menu",

@@ -2,11 +2,14 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { FACEBOOK_URL, TIKTOK_URL } from "@/lib/social-links";
 import { usePathname } from "next/navigation";
 import {
-  Instagram,
+  CalendarDays,
+  Facebook, Instagram,
   MapPin,
   Menu,
+  Music2,
   Palette,
   Gamepad2,
   Star,
@@ -62,6 +65,16 @@ export function SiteNavbar() {
       iconHoverClass: "group-hover:text-pink-300",
     },
     {
+      icon: CalendarDays,
+      label: t.nav.events,
+      href: "/events",
+      gradient:
+        "radial-gradient(circle at 50% 50%, rgba(167,139,250,0.4) 0%, rgba(139,92,246,0.14) 42%, transparent 68%)",
+      iconActiveClass: "text-violet-400",
+      iconMutedClass: "text-violet-400/55",
+      iconHoverClass: "group-hover:text-violet-300",
+    },
+    {
       icon: Star,
       label: t.nav.reviews,
       href: `${hashBase}#reviews`,
@@ -103,7 +116,7 @@ export function SiteNavbar() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0a0a0a]/55 backdrop-blur-md">
-        <div className="relative mx-auto h-[4.25rem] max-w-6xl px-3 sm:h-[4.5rem] sm:px-6">
+        <div className="relative mx-auto h-[4.25rem] max-w-[1536px] px-3 sm:h-[4.5rem] sm:px-6">
           <Link
             href="/"
             aria-label={t.nav.logoAlt}
@@ -112,7 +125,7 @@ export function SiteNavbar() {
           >
             <GradientLogoMark
               maskAlign="left"
-              className="h-8 w-[118px] sm:h-11 sm:w-[172px]"
+              className="h-8 w-[118px] sm:h-11 sm:w-[172px] xl:w-[118px] 2xl:w-[172px]"
               style={{
                 filter:
                   "drop-shadow(0 0 10px rgba(139,92,246,0.45)) drop-shadow(0 0 20px rgba(16,185,129,0.2))",
@@ -120,7 +133,7 @@ export function SiteNavbar() {
             />
           </Link>
 
-          <div className="absolute left-1/2 top-1/2 z-20 hidden w-auto max-w-none -translate-x-1/2 -translate-y-1/2 lg:block">
+          <div className="absolute left-1/2 top-1/2 z-20 hidden w-auto max-w-none -translate-x-1/2 -translate-y-1/2 xl:block">
             <GlowMenuBar
               items={glowItems}
               activeHref={pathname === "/" ? activeHash : pathname}
@@ -135,14 +148,32 @@ export function SiteNavbar() {
               href="https://www.instagram.com/haze_and_chill_cafe/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-emerald-300 transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/10 hover:text-emerald-200"
+              className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-emerald-300 sm:flex transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/10 hover:text-emerald-200"
               aria-label={t.nav.instagramLabel}
             >
               <Instagram className="h-5 w-5" strokeWidth={1.75} />
             </a>
+            <a
+              href={TIKTOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-emerald-300 sm:flex transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/10 hover:text-emerald-200"
+              aria-label={t.nav.tiktokLabel}
+            >
+              <Music2 className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+            </a>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-emerald-300 sm:flex transition-colors hover:border-emerald-400/40 hover:bg-emerald-500/10 hover:text-emerald-200"
+              aria-label={t.nav.facebookLabel}
+            >
+              <Facebook className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+            </a>
             <button
               type="button"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-violet-200 transition-colors hover:border-violet-400/40 hover:bg-violet-500/10 hover:text-white lg:hidden"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-violet-200 transition-colors hover:border-violet-400/40 hover:bg-violet-500/10 hover:text-white xl:hidden"
               aria-expanded={mobileOpen}
               aria-controls="mobile-primary-nav"
               aria-label={mobileOpen ? t.nav.closeMobileNav : t.nav.openMobileNav}
@@ -163,13 +194,13 @@ export function SiteNavbar() {
           <button
             type="button"
             aria-label={t.nav.closeMobileNav}
-            className="fixed inset-x-0 bottom-0 top-[4.25rem] z-40 bg-black/70 backdrop-blur-sm sm:top-[4.5rem] lg:hidden"
+            className="fixed inset-x-0 bottom-0 top-[4.25rem] z-40 bg-black/70 backdrop-blur-sm sm:top-[4.5rem] xl:hidden"
             onClick={() => setMobileOpen(false)}
           />
           <nav
             id="mobile-primary-nav"
             aria-label={t.nav.mobileNavTitle}
-            className="fixed left-0 right-0 top-[4.25rem] z-50 max-h-[calc(100dvh-4.25rem)] overflow-y-auto overscroll-contain border-b border-white/10 bg-[#0b0b0f]/97 px-3 pb-8 pt-3 shadow-[0_28px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:top-[4.5rem] sm:max-h-[calc(100dvh-4.5rem)] sm:px-4 lg:hidden"
+            className="fixed left-0 right-0 top-[4.25rem] z-50 max-h-[calc(100dvh-4.25rem)] overflow-y-auto overscroll-contain border-b border-white/10 bg-[#0b0b0f]/97 px-3 pb-8 pt-3 shadow-[0_28px_80px_rgba(0,0,0,0.75)] backdrop-blur-xl sm:top-[4.5rem] sm:max-h-[calc(100dvh-4.5rem)] sm:px-4 xl:hidden"
           >
             <p className="mb-3 border-b border-white/10 pb-2 text-center text-xs font-semibold uppercase tracking-[0.2em] text-violet-300/80">
               {t.nav.mobileNavTitle}
@@ -205,6 +236,18 @@ export function SiteNavbar() {
                 );
               })}
             </ul>
+            <div className="mt-4 flex flex-wrap gap-3 sm:hidden">
+              {[
+                { href: "https://www.instagram.com/haze_and_chill_cafe/", label: "Instagram", icon: Instagram },
+                { href: TIKTOK_URL, label: "TikTok", icon: Music2 },
+                { href: FACEBOOK_URL, label: "Facebook", icon: Facebook },
+              ].map(({ href, label, icon: Icon }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 px-3 text-sm text-emerald-300">
+                  <Icon className="h-4 w-4" aria-hidden />
+                  {label}
+                </a>
+              ))}
+            </div>
           </nav>
         </>
       ) : null}

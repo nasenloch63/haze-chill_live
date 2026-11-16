@@ -10,11 +10,26 @@ const nodemailer = createRequire(import.meta.url)("nodemailer");
 const now = new Date("2026-10-10T16:00:00Z");
 const valid = { name: "Test Gast", email: "guest@example.com", phone: "", date: "2026-10-11", time: "19:00", guests: 2, message: "Fensterplatz?", website: "" };
 
+test("requires 24 elapsed hours, including overnight arrivals and daylight-saving changes", () => {
+  for (const [date, time, instant] of [
+    ["2026-11-20", "19:00", "2026-11-20T18:00:00Z"],
+    ["2026-11-20", "00:30", "2026-11-20T23:30:00Z"],
+    ["2026-03-29", "17:00", "2026-03-29T15:00:00Z"],
+    ["2026-10-25", "17:00", "2026-10-25T16:00:00Z"],
+    ["2026-03-28", "01:30", "2026-03-29T00:30:00Z"],
+    ["2026-10-24", "01:30", "2026-10-24T23:30:00Z"],
+  ]) {
+    const boundary = Date.parse(instant) - 86400000;
+    assert.equal(validateReservation({ ...valid, date, time }, new Date(boundary)).ok, true);
+    assert.equal(validateReservation({ ...valid, date, time }, new Date(boundary + 1)).error, "notice");
+  }
+});
+
 test("Berlin arrival dates include the following night and reject elapsed times", () => {
-  const night = validateReservation({ ...valid, date: "2026-10-10", time: "00:30" }, now);
+  const night = validateReservation({ ...valid, date: "2026-10-10", time: "00:30" }, new Date("2026-10-09T16:00:00Z"));
   assert.equal(night.ok, true);
   assert.equal(night.data.arrivalDate, "2026-10-11");
-  assert.equal(validateReservation({ ...valid, date: "2026-10-10", time: "17:30" }, now).error, "time");
+  assert.equal(validateReservation({ ...valid, date: "2026-10-10", time: "17:30" }, now).error, "notice");
   assert.equal(validateReservation({ ...valid, time: "02:00" }, now).error, "time");
   assert.equal(validateReservation({ ...valid, date: "2026-10-09" }, now).error, "date");
 });
@@ -28,7 +43,7 @@ test("server validation rejects invalid calendar dates, header injection and inv
 });
 
 test("request email carries both evening and actual arrival date, without claiming confirmation", () => {
-  const { data } = validateReservation({ ...valid, date: "2026-10-10", time: "01:00" }, now);
+  const { data } = validateReservation({ ...valid, date: "2026-10-10", time: "01:00" }, new Date("2026-10-09T16:00:00Z"));
   const mail = reservationMail(data, "abc12345-6789");
   assert(mail.text.includes("noch nicht bestätigt"));
   assert(mail.text.includes("Samstag, 10. Oktober 2026"));

@@ -14,7 +14,7 @@ export type Reservation = {
   arrivalDate: string;
 };
 
-export type ReservationError = "invalid" | "date" | "time";
+export type ReservationError = "invalid" | "date" | "time" | "notice";
 export const emailPattern = /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/;
 
 export function berlinDate(now = new Date()) {
@@ -23,6 +23,30 @@ export function berlinDate(now = new Date()) {
   }).formatToParts(now);
   const get = (type: string) => parts.find(part => part.type === type)?.value;
   return `${get("year")}-${get("month")}-${get("day")}`;
+}
+
+export function reservationArrival(date: string, time: string) {
+  const evening = new Date(date + "T12:00:00Z");
+  if (Number.isNaN(evening.getTime()) || !reservationTimes.includes(time)) return null;
+  if (time < "02:00") evening.setUTCDate(evening.getUTCDate() + 1);
+  const arrivalDate = evening.toISOString().slice(0, 10);
+  const wallTime = Date.parse(arrivalDate + "T" + time + ":00Z");
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Berlin", timeZoneName: "longOffset",
+  });
+  let instant = wallTime;
+  // Resolve Berlin's UTC offset at arrival, including daylight-saving changes.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const offset = formatter.formatToParts(new Date(instant)).find(part => part.type === "timeZoneName")?.value;
+    const hours = Number(offset?.replace("GMT", "").split(":")[0]);
+    instant = wallTime - hours * 60 * 60 * 1000;
+  }
+  return { arrivalDate, instant };
+}
+
+export function hasReservationNotice(date: string, time: string, now = new Date()) {
+  const arrival = reservationArrival(date, time);
+  return arrival !== null && arrival.instant - now.getTime() >= 24 * 60 * 60 * 1000;
 }
 
 export function validateReservation(input: unknown, now = new Date()):
@@ -48,12 +72,7 @@ export function validateReservation(input: unknown, now = new Date()):
     return { ok: false, error: "date" };
   }
   if (!reservationTimes.includes(time)) return { ok: false, error: "time" };
-  const arrival = new Date(parsed);
-  if (time < "02:00") arrival.setUTCDate(arrival.getUTCDate() + 1);
-  const arrivalDate = arrival.toISOString().slice(0, 10);
-  const currentTime = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", hourCycle: "h23",
-  }).format(now);
-  if (`${arrivalDate}T${time}` <= `${berlinDate(now)}T${currentTime}`) return { ok: false, error: "time" };
+  const { arrivalDate } = reservationArrival(date, time)!;
+  if (!hasReservationNotice(date, time, now)) return { ok: false, error: "notice" };
   return { ok: true, data: { name, email, phone, date, time, guests, message, arrivalDate } };
 }
