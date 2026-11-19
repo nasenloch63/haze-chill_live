@@ -5,6 +5,8 @@ import { WarpShaderHero } from "@/components/ui/warp-shader";
 import { Button } from "@/components/ui/button";
 import { GradientLogoMark } from "@/components/haze/gradient-logo-mark";
 import { useLanguage } from "@/i18n/language-provider";
+import { christmasThemeEnabled } from "@/config/seasonal-theme";
+import { ChristmasHeroDecor } from "@/components/christmas/christmas-hero-decor";
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -45,6 +47,8 @@ export function HeroSection() {
           className="pointer-events-none absolute inset-0 z-[8] bg-[radial-gradient(ellipse_72%_62%_at_50%_34%,rgba(6,4,14,0.14)_0%,rgba(6,4,14,0.38)_52%,rgba(4,3,10,0.66)_100%)]"
           aria-hidden
         />
+
+        {christmasThemeEnabled ? <ChristmasHeroDecor /> : null}
 
         <div className="relative z-20 flex flex-1 flex-col justify-center px-4 pb-40 pt-[4.5rem] sm:px-6 sm:pb-48 sm:pt-20 md:pb-52 md:pt-20">
           <div className="mx-auto max-w-4xl text-center">
