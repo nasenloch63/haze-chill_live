@@ -174,7 +174,75 @@ export function DatenschutzView() {
             </LegalP>
           </section>
 
-          <LegalH2>8. Deine Rechte</LegalH2>
+          <section id="adventskalender" className="scroll-mt-24">
+            <LegalH2>
+              8. Adventskalender-Gewinnspiel (Teilnahmebedingungen &amp; Datenschutz)
+            </LegalH2>
+            <LegalP>
+              Im Rahmen des Adventskalender-Gewinnspiels von Haze &amp; Chill Café
+              (in Kooperation mit Jelly Joker und LivingSoilCrew) gelten folgende
+              Teilnahmebedingungen und Datenschutzhinweise:
+            </LegalP>
+            <LegalUl>
+              <li>
+                <strong className="text-violet-100">Einmalige Teilnahme:</strong>{" "}
+                Pro Person ist nur eine Teilnahme erlaubt.
+              </li>
+              <li>
+                <strong className="text-violet-100">Einmaliger Gewinn:</strong>{" "}
+                Wenn du einmal ausgelost wurdest, besteht keine Chance mehr, ein
+                zweites Mal ausgelost zu werden – bereits ausgeloste Personen sind
+                von allen weiteren Ziehungen ausgeschlossen.
+              </li>
+              <li>
+                <strong className="text-violet-100">Tägliche Auslosung:</strong>{" "}
+                Die Auslosung findet täglich vom 1. bis 24. Dezember um 20 Uhr auf
+                dem Instagram-Account vom Haze &amp; Chill Café (
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-200/90"
+                >
+                  @haze_and_chill_cafe
+                </a>
+                , in der Instagram-Story) statt.
+              </li>
+            </LegalUl>
+            <LegalP>
+              <strong className="text-violet-100">
+                Datenverarbeitung für das Gewinnspiel:
+              </strong>{" "}
+              Bei der Eintragung in die Teilnehmerliste verarbeiten wir deinen
+              Vor- und Nachnamen, deine E-Mail-Adresse, deine Telefonnummer sowie
+              deinen Instagram-Namen ausschließlich zur Durchführung des
+              Gewinnspiels, zur Auslosung und zur Gewinnbenachrichtigung
+              (Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO). Nach Abschluss und
+              Abwicklung des Gewinnspiels werden die Daten gelöscht, sofern keine
+              Einwilligung für weitere Informationen vorliegt oder gesetzliche
+              Aufbewahrungspflichten bestehen.
+            </LegalP>
+            <LegalP>
+              <strong className="text-violet-100">
+                Optionale Einwilligung für Neuigkeiten &amp; Angebote:
+              </strong>{" "}
+              Sofern du auf der Teilnehmerliste zusätzlich das optionale Feld für
+              Neuigkeiten und Angebote von Haze &amp; Chill Café ankreuzt,
+              verarbeiten wir deine E-Mail-Adresse auf Grundlage deiner
+              Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Diese Einwilligung ist
+              freiwillig und keine Voraussetzung für die Teilnahme am Gewinnspiel.
+              Du kannst sie jederzeit mit Wirkung für die Zukunft per E-Mail an{" "}
+              <a
+                href="mailto:info@naser-solutions.de"
+                className="text-emerald-200/90"
+              >
+                info@naser-solutions.de
+              </a>{" "}
+              widerrufen.
+            </LegalP>
+          </section>
+
+          <LegalH2>9. Deine Rechte</LegalH2>
           <LegalP>
             Du hast gegenüber uns folgende Rechte bezüglich deiner personenbezogenen
             Daten:
@@ -193,7 +261,7 @@ export function DatenschutzView() {
             jeweilige Landesbeauftragte für Datenschutz.
           </LegalP>
 
-          <LegalH2>9. Kontakt bei Datenschutzfragen</LegalH2>
+          <LegalH2>10. Kontakt bei Datenschutzfragen</LegalH2>
           <LegalP>
             Bei Fragen zum Datenschutz wende dich bitte an:
             <br />
@@ -213,9 +281,9 @@ export function DatenschutzView() {
             ) : null}
           </LegalP>
 
-          <LegalH2>10. Aktualität</LegalH2>
+          <LegalH2>11. Aktualität</LegalH2>
           <LegalP>
-            Diese Datenschutzerklärung hat den Stand: Oktober 2026
+            Diese Datenschutzerklärung hat den Stand: November 2026
             <br />
             Bei Änderungen an der Webseite oder neuen gesetzlichen Vorgaben wird
             diese Erklärung entsprechend aktualisiert.
@@ -321,6 +389,71 @@ export function DatenschutzView() {
             needed to handle them and meet applicable obligations. A temporary
             hashed IP counter helps prevent repeated submissions; it does not
             store contact details. A request is not a confirmed table booking.
+          </LegalP>
+        </section>
+
+        <section id="adventskalender" className="scroll-mt-24">
+          <LegalH2>
+            Advent calendar giveaway (Terms of participation &amp; Privacy)
+          </LegalH2>
+          <LegalP>
+            The following terms of participation and privacy notices apply to the
+            Advent calendar giveaway hosted by Haze &amp; Chill Café (in
+            cooperation with Jelly Joker and LivingSoilCrew):
+          </LegalP>
+          <LegalUl>
+            <li>
+              <strong className="text-violet-100">One entry per person:</strong>{" "}
+              Only one participation per person is permitted.
+            </li>
+            <li>
+              <strong className="text-violet-100">One win per person:</strong>{" "}
+              Once you have been drawn as a winner, you are no longer eligible to
+              be drawn a second time – previous winners are excluded from all
+              subsequent draws.
+            </li>
+            <li>
+              <strong className="text-violet-100">Daily draw:</strong> The draw
+              takes place daily from December 1 to December 24 at 8:00 PM (20:00)
+              on the Haze &amp; Chill Café Instagram account (
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-200/90"
+              >
+                @haze_and_chill_cafe
+              </a>
+              , via Instagram Story).
+            </li>
+          </LegalUl>
+          <LegalP>
+            <strong className="text-violet-100">
+              Data processing for the giveaway:
+            </strong>{" "}
+            When you enter the participant list, we process your first and last
+            name, email address, phone number, and Instagram handle solely to
+            administer the giveaway, conduct the draw, and notify winners (Art.
+            6(1)(b) GDPR). Once the giveaway has concluded, your data will be
+            deleted unless you have opted in to receive news or statutory
+            retention obligations apply.
+          </LegalP>
+          <LegalP>
+            <strong className="text-violet-100">
+              Optional consent for news &amp; offers:
+            </strong>{" "}
+            If you also check the optional box to receive news and offers from
+            Haze &amp; Chill Café by email, we process your email address based
+            on your consent (Art. 6(1)(a) GDPR). Consent is voluntary and not a
+            prerequisite for entering the giveaway. You may withdraw your consent
+            at any time with future effect by emailing{" "}
+            <a
+              href="mailto:info@naser-solutions.de"
+              className="text-emerald-200/90"
+            >
+              info@naser-solutions.de
+            </a>
+            .
           </LegalP>
         </section>
 
